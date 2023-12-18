@@ -1,0 +1,29 @@
+﻿@model DataAccessLayer.EmpInfo
+@{
+    ViewBag.Title = "EmployeeLogin";
+}
+
+<h2>Employee Login Page</h2>
+@using (Html.BeginForm("EmployeeLogin", "Home", FormMethod.Post))
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.EmailId, new { @class = "control-label col-md-2" })
+        <div class="col-md-5">
+            @Html.TextBoxFor(model => model.EmailId, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.EmailId)
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(model => model.PassCode, new { @class = "control-label col-md-2" })
+        <div class="col-md-5">
+            @Html.TextBoxFor(model => model.PassCode, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.PassCode)
+        </div>
+    </div>
+    <br />
+    <div>
+        <button class="btn btn-danger">Login</button>
+    </div>
+}

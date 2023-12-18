@@ -1,0 +1,27 @@
+﻿@model IEnumerable<DataAccessLayer.BlogInfo>
+@{
+    ViewBag.Title = "BlogList";
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+}
+
+<h2>Blog List For : @Session["User"] </h2>
+
+<p>
+    @Html.ActionLink("Add New", "SaveBlog",null, new { @class = "btn btn-success" })
+</p>
+<div class="row">
+    @foreach (var item in Model)
+    {
+
+        <section class="col-md-6" aria-labelledby="gettingStartedTitle" style="margin-bottom:10px; ">
+            <div class="inner" style="border: 2px solid grey; padding: 10px;">
+                <h3 id="gettingStartedTitle">@item.Title - By @item.EmpEmailId</h3>
+                <p>Date : @item.DateOfCreation.ToString("dd-MMM-yyyy")</p>
+                <p>Subject :@item.Subject</p>
+                <p><a class="btn btn-primary btn-md" href="@item.BlogUrl">@item.BlogUrl</a></p>
+                @Html.ActionLink("Edit", "Edit", new { id = item.BlogId }, new { @class = "btn btn-primary", style = "background-color: blue; color: white;" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.BlogId }, new { @class = "btn btn-danger" })
+            </div>
+        </section>
+    }
+</div>
